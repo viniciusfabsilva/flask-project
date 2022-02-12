@@ -15,4 +15,4 @@ install:
 	pip install -e .['dev']
 
 test:
-	pytest tests/ -v
+	FLASK_ENV=test pytest tests/ -v --cov=delivery
