@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+flaskDelivery.egg-info/PKG-INFO
+flaskDelivery.egg-info/SOURCES.txt
+flaskDelivery.egg-info/dependency_links.txt
+flaskDelivery.egg-info/requires.txt
+flaskDelivery.egg-info/top_level.txt
