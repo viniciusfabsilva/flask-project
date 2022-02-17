@@ -10,5 +10,7 @@ src/__init__.py
 src/app.py
 src/ext/__init__.py
 src/ext/api/__init__.py
+src/ext/config/__init__.py
 src/ext/site/__init__.py
 src/ext/site/main.py
+src/ext/toolbar/__init__.py
