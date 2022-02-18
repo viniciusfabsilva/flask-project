@@ -5,10 +5,13 @@ from src.ext.db import db
 class User(db.Model):
     __tablename__ = "user"
     id = db.Column('id', db.Integer, primary_key=True)
-    email = db.Column('email', db.Unicode, unique=True)
+    email = db.Column('email', db.Unicode, unique=True  )
     passwd = db.Column('passwd', db.Unicode)
     admin = db.Column('admin', db.Boolean)
+    nome = db.Column('nome', db.Unicode)
 
+    def __repr__(self):
+        return self.email
 
 class Category(db.Model):
     __tablename__ = "category"
@@ -16,7 +19,7 @@ class Category(db.Model):
     name = db.Column('name', db.Unicode, unique=True)
 
 
-class Store(db.Model):
+class Store(db.Model): 
     __tablename__ = "store"
     id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column('name', db.Unicode)
