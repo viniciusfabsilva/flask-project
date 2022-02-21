@@ -17,7 +17,7 @@ class CodeEmiter:
     indentContent = "    "
     endLineContent = "\n"
 
-    output = u""
+    output = ""
 
     def indent(self):
         self.indentLevel += 1

@@ -21,4 +21,13 @@ init_db:
 
 
 test:
-	FLASK_ENV=test pytest tests/ -v --cov=src
+	pytest tests/ -v --cov=src
+
+
+format:
+	isort **/*.py
+	black -l 79 **/*.py
+
+
+run:
+	FLASK_APP=src/app.py FLASK_ENV=development flask run

@@ -1,0 +1,36 @@
+[default]
+DEBUG = false
+FLASK_ADMIN_SWATCH = "cerulean"
+ADMIN_NAME = "Comilão Food"
+EXTENSIONS = [
+  "src.ext.db:init_app",
+  "src.ext.migrate:init_app",
+  "src.ext.auth:init_app",
+  "src.ext.admin:init_app",
+  "src.ext.cli:init_app",
+  "src.ext.site:init_app",
+  "src.ext.hooks:init_app"
+]
+
+[development]
+DEBUG = true
+SQLALCHEMY_DATABASE_URI = "sqlite:///comilao.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+ADMIN_NAME= "Comilão Food (dev mode)"
+EXTENSIONS = [
+  "src.ext.db:init_app",
+  "src.ext.migrate:init_app",
+  "src.ext.auth:init_app",
+  "src.ext.admin:init_app",
+  "src.ext.cli:init_app",
+  "src.ext.toolbar:init_app",
+  "src.ext.site:init_app",
+  "src.ext.hooks:init_app"
+]
+
+[production]
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+SQLALCHEMY_DATABASE_URI = "mysql://...."
