@@ -11,6 +11,7 @@ EXTENSIONS = [
   "src.ext.site:init_app",
   "src.ext.hooks:init_app"
 ]
+UPLOAD_FOLDER = "uploads"
 
 [development]
 DEBUG = true
