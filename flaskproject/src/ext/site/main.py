@@ -1,9 +1,12 @@
-from flask import render_template
+import re
+from flask import flash, render_template
 from flask import Blueprint
 from flask import current_app
 from flask import request
 from flask import redirect
+from flask_login import login_user, logout_user
 from src.ext.auth.form import UserForm
+from src.ext.auth.form import LoginForm
 from src.ext.auth.models import User
 from src.ext.auth.controller import create_user, save_user_foto
 
@@ -21,6 +24,23 @@ def about():
     return render_template("about.html")
 
 
+@bp.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        
+        user = User.query.filter_by(email=form.email.data).first()
+        login_user(user)
+        if user and user.passwd == form.password.data:
+            flash('Logged in.')
+        else:
+            flash('Invalid Login.')
+    else:
+        print(form.errors)
+    
+    return render_template("loginform.html", form=form)
+
+
 @bp.route("/cadastro", methods=["GET", "POST"])
 def signup():
     form = UserForm()
@@ -35,8 +55,7 @@ def signup():
                 foto.filename,
                 foto
             )
-        
-        
+
         # TODO forçar login
         return redirect("/")
 

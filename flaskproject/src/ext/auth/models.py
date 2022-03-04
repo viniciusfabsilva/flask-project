@@ -9,5 +9,22 @@ class User(db.Model):
     admin = db.Column('admin', db.Boolean)
     nome = db.Column('nome', db.Unicode)
 
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+
+    def get_id(self):
+        return str(self.id)
+    
+
     def __repr__(self):
         return self.email
