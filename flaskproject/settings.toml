@@ -9,7 +9,8 @@ EXTENSIONS = [
   "src.ext.admin:init_app",
   "src.ext.cli:init_app",
   "src.ext.site:init_app",
-  "src.ext.hooks:init_app"
+  "src.ext.hooks:init_app",
+  "src.ext.login:init_app"
 ]
 UPLOAD_FOLDER = "uploads"
 
@@ -29,7 +30,8 @@ EXTENSIONS = [
   "src.ext.cli:init_app",
   "src.ext.toolbar:init_app",
   "src.ext.site:init_app",
-  "src.ext.hooks:init_app"
+  "src.ext.hooks:init_app",
+  "src.ext.login:init_app"
 ]
 
 [production]

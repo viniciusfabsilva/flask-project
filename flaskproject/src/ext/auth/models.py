@@ -1,3 +1,4 @@
+from black import main
 from src.ext.db import db
 
 
@@ -21,10 +22,8 @@ class User(db.Model):
     def is_anonymous(self):
         return False
 
-
     def get_id(self):
         return str(self.id)
-    
 
     def __repr__(self):
         return self.email

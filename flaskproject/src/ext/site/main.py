@@ -1,9 +1,9 @@
 import re
 from flask import flash, render_template
 from flask import Blueprint
-from flask import current_app
+from flask import current_app as app
 from flask import request
-from flask import redirect
+from flask import redirect, url_for
 from flask_login import login_user, logout_user
 from src.ext.auth.form import UserForm
 from src.ext.auth.form import LoginForm
@@ -22,23 +22,6 @@ def index():
 @bp.route("/sobre")
 def about():
     return render_template("about.html")
-
-
-@bp.route("/login", methods=["GET", "POST"])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        
-        user = User.query.filter_by(email=form.email.data).first()
-        login_user(user)
-        if user and user.passwd == form.password.data:
-            flash('Logged in.')
-        else:
-            flash('Invalid Login.')
-    else:
-        print(form.errors)
-    
-    return render_template("loginform.html", form=form)
 
 
 @bp.route("/cadastro", methods=["GET", "POST"])
@@ -65,3 +48,28 @@ def signup():
 @bp.route("/restaurantes")
 def restaurants():
     return render_template("restaurants.html")
+
+
+@bp.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+
+        user = User.query.filter_by(email=form.email.data).first()
+        login_user(user)
+        if user and user.passwd == form.password.data:
+            flash('Logged in.')
+            return redirect("/")
+        else:
+            flash('Invalid Login.')
+    else:
+        print(form.errors)
+
+    return render_template("loginform.html", form=form)
+
+
+@bp.route("/logout")
+def logout():
+    logout_user()
+    return redirect("/")

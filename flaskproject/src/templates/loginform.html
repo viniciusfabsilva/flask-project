@@ -14,19 +14,17 @@
 
 {% block main %}
 
-<form class='login-form' action='{{url_for("site.login")}}' method='post' enctype='multipart/form-data'>
-  {{form.csrf_token}}
+<div>
+  <form class='login-form' action='{{url_for("site.login")}}' method='post' enctype='multipart/form-data'>
+    {{form.csrf_token}}
 
-  {{form.email.label}}<br>
-  {{form.email(size=20)}}<br>
+    {{form.email.label}}<br>
+    {{form.email(size=20)}}<br>
 
-  {{form.password.label}}<br>
-  {{form.password(size=20)}}<br>
+    {{form.password.label}}<br>
+    {{form.password(size=20)}}<br>
 
-  <input type='submit' value='submit' />
-</form>
-
-</form>
-
+    <input type='submit' value='submit' />
+  </form>
 
 {% endblock %}

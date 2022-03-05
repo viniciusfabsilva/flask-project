@@ -1,12 +1,12 @@
 from flask import Flask
 
-from src.ext import admin, auth, cli, config, db, hooks, migrate, site, toolbar
+from src.ext import admin, auth, cli, config, db, hooks, migrate, site, toolbar, login
 
 
 def create_app():
     app = Flask(__name__)
     config.init_app(app)
-
+    
     # db.init_app(app)
     # migrate.init_app(app)
     # auth.init_app(app)
