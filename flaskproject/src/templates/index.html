@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% import "macros/list_item.html.j2" as list_item %}
 {% block top %}
-<section class="hero is-primary">
-    <div class="hero-body">
-        <p class="title">
-            {{site_name}}
-        </p>
-        <p class="subtitle">
-            {{site_subtitle}} 
-        </p>
+<section>
+  <div class="header">
+    <div class="header-content">
+      <h1>Bem vindo
+        {% if current_user.is_authenticated %}
+        {{ current_user.nome }}
+        {% endif %}
+      </h1>
     </div>
+  </div>
 </section>
-{% endblock top %} 
+{% endblock top %}
 
 {% block main %}
 <div class="columns">
-    {{ list_item.cards([1,2,3,4])}}
+  {{ list_item.cards([1,2,3,4])}}
 </div>
 {% endblock main %}

@@ -1,0 +1,6 @@
+@media (max-width:1000px) {
+  .header-content {
+    position: absolute;
+    padding-left: 24px;
+  };
+};

@@ -7,6 +7,7 @@ from flask import redirect, url_for
 from flask_login import login_user, logout_user
 from src.ext.auth.form import UserForm
 from src.ext.auth.form import LoginForm
+from src.ext.site.controllers import get_items
 from src.ext.auth.models import User
 from src.ext.auth.controller import create_user, save_user_foto
 
@@ -47,7 +48,9 @@ def signup():
 
 @bp.route("/restaurantes")
 def restaurants():
-    return render_template("restaurants.html")
+    get_item = get_items()
+    nome = get_item[1].name
+    return render_template("restaurants.html", get_item = get_item, nome = nome)
 
 
 @bp.route("/login", methods=["GET", "POST"])
