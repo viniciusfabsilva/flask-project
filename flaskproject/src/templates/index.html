@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% import "macros/list_item.html.j2" as list_item %}
+{% import "macros/list_item_index.html.j2" as list_item %}
 {% block top %}
 <section>
   <div class="header">
     <div class="header-content">
-      <h1>Bem vindo
-        {% if current_user.is_authenticated %}
-        {{ current_user.nome }}
-        {% endif %}
+      <h1 class="nome">Bem vindo 
+          {{ get_item|length }}
+          {% if current_user.is_authenticated %}
+          {{ current_user.nome }}
+          {% endif %}
       </h1>
     </div>
   </div>
@@ -16,6 +17,6 @@
 
 {% block main %}
 <div class="columns">
-  {{ list_item.cards([1,2,3,4])}}
+  {{ list_item.cards(get_item) }}
 </div>
 {% endblock main %}

@@ -17,7 +17,7 @@ bp = Blueprint("site", __name__)
 @bp.route("/")
 def index():
     # current_app.logger.debug("entrei na função main") << ferramenta de debug para o toolbar
-    return render_template("index.html")
+    return render_template("index.html", get_item = get_items())
 
 
 @bp.route("/sobre")
@@ -49,8 +49,7 @@ def signup():
 @bp.route("/restaurantes")
 def restaurants():
     get_item = get_items()
-    nome = get_item[1].name
-    return render_template("restaurants.html", get_item = get_item, nome = nome)
+    return render_template("restaurants.html", get_item = get_item)
 
 
 @bp.route("/login", methods=["GET", "POST"])
