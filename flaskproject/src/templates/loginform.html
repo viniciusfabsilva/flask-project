@@ -17,9 +17,9 @@
 <div class="oi">
   <form class='login-form' action='{{url_for("site.login")}}' method='post' enctype='multipart/form-data'>
     {{form.csrf_token}}
-
+    
     {{form.email.label}}<br>
-    {{form.email(size=20)}}<br>
+    {{form.email(_class="control has-icons-left has-icons-right" ,size=20, placeholder="")}}<br>
 
     {{form.password.label}}<br>
     {{form.password(size=20)}}<br>

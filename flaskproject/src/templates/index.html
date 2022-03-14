@@ -4,8 +4,7 @@
 <section>
   <div class="header">
     <div class="header-content">
-      <h1 class="nome">Bem vindo 
-          {{ get_item|length }}
+      <h1 class="nome">Bem vindo
           {% if current_user.is_authenticated %}
           {{ current_user.nome }}
           {% endif %}

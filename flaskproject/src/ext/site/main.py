@@ -1,5 +1,5 @@
 import re
-from flask import flash, render_template
+from flask import flash, jsonify, render_template
 from flask import Blueprint
 from flask import current_app as app
 from flask import request
@@ -46,10 +46,10 @@ def signup():
     return render_template("userform.html", form=form)
 
 
-@bp.route("/restaurantes")
-def restaurants():
+@bp.route("/lanches")
+def lanches():
     get_item = get_items()
-    return render_template("restaurants.html", get_item = get_item)
+    return render_template("lanches.html", get_item = get_item)
 
 
 @bp.route("/login", methods=["GET", "POST"])
@@ -75,3 +75,17 @@ def login():
 def logout():
     logout_user()
     return redirect("/")
+
+
+@bp.route("/list_itens", methods=['GET', 'POST'])
+def list_itens():
+    #get request
+    if request.method == 'GET':
+        get_item = get_items()
+        for item in get_item:
+            message = {item.name: item.price}
+            return jsonify(message)
+    #post request
+    if request.method == 'POST':
+        print(request.get_json())
+        return 'sucess'
