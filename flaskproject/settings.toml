@@ -2,6 +2,7 @@
 DEBUG = false
 FLASK_ADMIN_SWATCH = "cerulean"
 ADMIN_NAME = "Comilão Food"
+SECRET_KEY = ',Z>\xe5|\xff\xa6\x94\xbem\xe4|\xc2n*\x89'
 EXTENSIONS = [
   "src.ext.db:init_app",
   "src.ext.migrate:init_app",
