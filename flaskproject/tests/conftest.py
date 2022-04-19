@@ -11,4 +11,4 @@ from src.app import create_app
 @pytest.fixture(scope="function")
 def app():
     """Instance of Main Flask App"""
-    return create_app()
+    return create_app() 

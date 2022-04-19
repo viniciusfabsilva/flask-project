@@ -6,5 +6,5 @@ def get_all_active_stores():
 
 
 def get_items():
-    itens = Items.query.filter_by(available='1').all()
+    itens = list(Items.query.filter_by(available='1').all())
     return itens

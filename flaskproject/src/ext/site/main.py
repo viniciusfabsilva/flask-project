@@ -10,6 +10,9 @@ from src.ext.auth.form import LoginForm
 from src.ext.site.controllers import get_items
 from src.ext.auth.models import User
 from src.ext.auth.controller import create_user, save_user_foto
+import json
+import decimal
+from collections import defaultdict
 
 bp = Blueprint("site", __name__)
 
@@ -17,7 +20,7 @@ bp = Blueprint("site", __name__)
 @bp.route("/")
 def index():
     # current_app.logger.debug("entrei na função main") << ferramenta de debug para o toolbar
-    return render_template("index.html", get_item = get_items())
+    return render_template("index.html", get_item=get_items())
 
 
 @bp.route("/sobre")
@@ -49,7 +52,7 @@ def signup():
 @bp.route("/lanches")
 def lanches():
     get_item = get_items()
-    return render_template("lanches.html", get_item = get_item)
+    return render_template("lanches.html", get_item=get_item)
 
 
 @bp.route("/login", methods=["GET", "POST"])
@@ -76,16 +79,17 @@ def logout():
     logout_user()
     return redirect("/")
 
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            return str(o)
+        return super(DecimalEncoder, self).default(o)
 
 @bp.route("/list_itens", methods=['GET', 'POST'])
 def list_itens():
-    #get request
+    # get request
     if request.method == 'GET':
         get_item = get_items()
-        for item in get_item:
-            message = {item.name: item.price}
-            return jsonify(message)
-    #post request
-    if request.method == 'POST':
-        print(request.get_json())
-        return 'sucess'
+        for get_itens in range(len(get_item)):
+            message_json = jsonify(name=get_item[get_itens].name, price=get_item[get_itens].price)
+            return message_json

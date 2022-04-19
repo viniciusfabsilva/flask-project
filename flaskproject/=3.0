@@ -1,0 +1,2 @@
+Requirement already satisfied: jinja2 in c:\users\vinic\appdata\local\programs\python\python310\lib\site-packages (3.1.1)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\vinic\appdata\local\programs\python\python310\lib\site-packages (from jinja2) (2.1.1)
