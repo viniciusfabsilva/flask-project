@@ -1,8 +1,10 @@
 flask
 flask-sqlalchemy
+flask-restplus
 flask-migrate
 flask-admin
 flask-login
+flask-restx
 flask-wtf
 email_validator
 dynaconf

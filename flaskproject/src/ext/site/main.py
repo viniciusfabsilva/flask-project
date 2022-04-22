@@ -79,17 +79,25 @@ def logout():
     logout_user()
     return redirect("/")
 
+
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, decimal.Decimal):
             return str(o)
         return super(DecimalEncoder, self).default(o)
 
+
 @bp.route("/list_itens", methods=['GET', 'POST'])
 def list_itens():
     # get request
     if request.method == 'GET':
         get_item = get_items()
+        message_json = []
         for get_itens in range(len(get_item)):
-            message_json = jsonify(name=get_item[get_itens].name, price=get_item[get_itens].price)
-            return message_json
+            message_json.append({
+                'nome': get_item[get_itens].name,
+                'preco': format(get_item[get_itens].price, '.2f')
+            }
+            )
+        print(message_json)
+        return json.dumps(message_json)
